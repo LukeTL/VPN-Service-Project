@@ -1,52 +1,28 @@
-image: hashicorp/terraform:1.0.0
-
-variables:
-  TF_ROOT: ./infrastructure
-  TF_ADDRESS: ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/terraform/state/${CI_ENVIRONMENT_SLUG}
-  TF_CLI_ARGS: -no-color
+include:
+  - template: Terraform/Base.gitlab-ci.yml
+  - template: Jobs/SAST-IaC.gitlab-ci.yml
 
 stages:
-  - init
   - validate
-  - plan
-  - apply
-  - destroy
+  - test
+  - build
+  - deploy
+  - cleanup
 
-cache:
-  paths:
-    - .terraform
-
-before_script:
-  - cd ${TF_ROOT}
-  - terraform --version
-
-init:
-  stage: init
-  script:
-    - terraform init -backend-config="address=${TF_ADDRESS}" -backend-config="access_token=${CI_JOB_TOKEN}"
+fmt:
+  extends: .terraform:fmt
+  needs: []
 
 validate:
-  stage: validate
-  script:
-    - terraform validate
+  extends: .terraform:validate
+  needs: []
 
-plan:
-  stage: plan
-  script:
-    - terraform plan -out=plan.tfplan
-  artifacts:
-    name: plan
-    paths:
-      - plan.tfplan
+build:
+  extends: .terraform:build
 
-apply:
-  stage: apply
-  when: manual
-  script:
-    - terraform apply -input=false plan.tfplan
-
-destroy:
-  stage: destroy
-  when: manual
-  script:
-    - terraform destroy -auto-approve
+deploy:
+  extends: .terraform:deploy
+  dependencies:
+    - build
+  environment:
+    name: $TF_STATE_NAME
