@@ -45,8 +45,8 @@
 #       when: on_success
 # Add more stuff here
 
-include:
-  - template: Jobs/SAST-IaC.gitlab-ci.yml
+# include:
+#   - template: Jobs/SAST-IaC.gitlab-ci.yml
 
 image:
   name: registry.gitlab.com/cloud_project1/vpn_service_project/custom_image:v1.0.0
