@@ -5,6 +5,9 @@ include:
 variables:
   TF_ROOT: ${CI_PROJECT_DIR}/infrastructure
 
+image:
+  name: "$CI_TEMPLATE_REGISTRY_HOST/gitlab-org/terraform-images/releases/1.6:v1.0.0"
+
 stages:
   - validate
   - test
