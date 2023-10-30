@@ -1,53 +1,3 @@
-# include:
-#   - template: Terraform/Base.gitlab-ci.yml
-#   - template: Jobs/SAST-IaC.gitlab-ci.yml
-
-# variables:
-#   TF_ROOT: ${CI_PROJECT_DIR}/infrastructure
-
-# image:
-#   name: "$CI_TEMPLATE_REGISTRY_HOST/gitlab-org/terraform-images/branches/v1-6-0-1.5:f158d31c1356d14029d8285ddd4b79ebbe6d7e90"
-
-# stages:
-#   - validate
-#   - test
-#   - build
-#   - deploy
-#   - cleanup
-
-# fmt:
-#   extends: .terraform:fmt
-#   needs: []
-
-# validate:
-#   extends: .terraform:validate
-#   needs: []
-
-# build:
-#   extends: .terraform:build
-
-# deploy:
-#   extends: .terraform:deploy
-#   rules:
-#     - if: $CI_COMMIT_TITLE !~ /destroy/
-#       when: manual
-#   dependencies:
-#     - build
-#   environment:
-#     name: $TF_STATE_NAME
-
-# cleanup:
-#   extends: .terraform:destroy
-#   environment:
-#     name: $TF_STATE_NAME
-#   rules:
-#     - if: $CI_COMMIT_TITLE =~ /destroy/
-#       when: on_success
-# Add more stuff here
-
-# include:
-#   - template: Jobs/SAST-IaC.gitlab-ci.yml
-
 image:
   name: registry.gitlab.com/cloud_project1/vpn_service_project/custom_image:v1.0.1
 
@@ -109,11 +59,12 @@ deploy:
 configure:
   stage: configure
   script:
-    - ansible-inventory -i "server_configuration/aws_ec2.yml" --list
-    - ls -a "./server_configuration"
+    - ansible-playbook -i "server_configuration/aws_ec2.yml" "server_configuration/vpn_server_playbook.yml"
+    # - ansible-inventory -i "server_configuration/aws_ec2.yml" --list
+    # - ls -a "./server_configuration"
     # - ansible aws_ec2 -i "server_configuration/aws_ec2.yml" -m ping
-    - ansible all --list-hosts
-    - ansible-inventory --graph
+    # - ansible all --list-hosts
+    # - ansible-inventory --graph
   rules:
     - if: $CI_COMMIT_TITLE !~ /destroy/
   dependencies:

@@ -1,0 +1,7 @@
+---
+- name: Configure EC2 instance
+  hosts: tag_Type_vpn
+  become: yes
+  tasks:
+    - name: Example tasks
+      command: echo "Hello World"
