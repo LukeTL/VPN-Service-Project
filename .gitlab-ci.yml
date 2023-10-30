@@ -43,3 +43,4 @@ cleanup:
   rules:
     - if: $CI_COMMIT_TITLE =~ /destroy/
       when: on_success
+# Add more stuff here
