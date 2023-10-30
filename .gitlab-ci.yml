@@ -25,7 +25,18 @@ build:
 
 deploy:
   extends: .terraform:deploy
+  rules:
+    - if: $CI_COMMIT_TITLE != "destroy"
+      when: on_success
   dependencies:
     - build
   environment:
     name: $TF_STATE_NAME
+
+cleanup:
+  extends: .terraform:destroy
+  environment:
+    name: $TF_STATE_NAME
+  rules:
+    - if: $CI_COMMIT_TITLE == "destroy"
+      when: on_success
