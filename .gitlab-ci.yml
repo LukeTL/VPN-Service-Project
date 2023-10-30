@@ -6,7 +6,7 @@ variables:
   TF_ROOT: ${CI_PROJECT_DIR}/infrastructure
 
 image:
-  name: "$CI_TEMPLATE_REGISTRY_HOST/gitlab-org/terraform-images/releases/v1.6"
+  name: "$CI_TEMPLATE_REGISTRY_HOST/gitlab-org/terraform-images/branches/v1-6-0-1.5"
 
 stages:
   - validate
