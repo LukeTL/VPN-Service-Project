@@ -49,7 +49,7 @@
 #   - template: Jobs/SAST-IaC.gitlab-ci.yml
 
 image:
-  name: registry.gitlab.com/cloud_project1/vpn_service_project/custom_image:v1.0.0
+  name: registry.gitlab.com/cloud_project1/vpn_service_project/custom_image:v1.0.1
 
 variables:
   TF_ROOT: ${CI_PROJECT_DIR}/infrastructure
@@ -91,6 +91,7 @@ build:
     reports:
       terraform: ${TF_ROOT}/plan.json
 
+# Deploy Infrastructure if commit message lacks the string "destroy"
 deploy:
   stage: deploy
   script:
@@ -102,13 +103,17 @@ deploy:
   environment:
     name: $TF_STATE_NAME
 
+# Fetch Dynamic Inventory from AWS
 configure:
   stage: configure
   script:
     - ansible-inventory -i "server_configuration/aws_ec2.yml" --list
+  rules:
+    - if: $CI_COMMIT_TITLE !~ /destroy/
   dependencies:
     - deploy
 
+# Destroy infrastructure if commit message has the string "destroy"
 destroy:
   stage: cleanup
   script:
