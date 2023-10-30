@@ -62,9 +62,10 @@ cache:
 
 stages:
   - validate
-  - test
+  # - test
   - build
   - deploy
+  - configure
   - cleanup
 
 fmt:
@@ -100,6 +101,13 @@ deploy:
       when: manual
   environment:
     name: $TF_STATE_NAME
+
+configure:
+  stage: configure
+  script:
+    - ansible-inventory -i "server_configuration/aws_ec2.yml" --list
+  dependencies:
+    - deploy
 
 destroy:
   stage: cleanup
