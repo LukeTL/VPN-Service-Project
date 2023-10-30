@@ -8,10 +8,8 @@ terraform {
   }
 
   backend "http" {
-
   }
 }
-
 
 provider "aws" {
   alias  = "us_provider"
