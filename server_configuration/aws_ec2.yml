@@ -4,5 +4,9 @@ regions:
   - us-east-1
   - ap-southeast-1
 
-filters:
-  tag:Type: vpn
+# filters:
+#   tag:Type: vpn
+
+keyed_groups:
+  - prefix: tag
+    key: tags

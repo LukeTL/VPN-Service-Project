@@ -59,6 +59,8 @@ deploy:
 configure:
   stage: configure
   script:
+    - ansible-inventory -i "server_configuration/aws_ec2.yml" --list
+    - ansible-inventory -i "server_configuration/aws_ec2.yml" --graph
     - ansible-playbook -i "server_configuration/aws_ec2.yml" "server_configuration/vpn_server_playbook.yml"
     # - ansible-inventory -i "server_configuration/aws_ec2.yml" --list
     # - ls -a "./server_configuration"

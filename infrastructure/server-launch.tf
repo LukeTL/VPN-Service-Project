@@ -1,23 +1,23 @@
 # # Data blocks to obtain latest Amazon Linux Image
-# data "aws_ami" "us_vpn_server_image" {
-#   provider    = aws.us_provider
-#   most_recent = true
-#   owners      = ["amazon"]
-#   filter {
-#     name   = "name"
-#     values = ["amzn2-ami-hvm*"]
-#   }
-# }
+data "aws_ami" "us_vpn_server_image" {
+  provider    = aws.us_provider
+  most_recent = true
+  owners      = ["amazon"]
+  filter {
+    name   = "name"
+    values = ["amzn2-ami-hvm*"]
+  }
+}
 
-# data "aws_ami" "sg_vpn_server_image" {
-#   provider    = aws.sg_provider
-#   most_recent = true
-#   owners      = ["amazon"]
-#   filter {
-#     name   = "name"
-#     values = ["amzn2-ami-hvm*"]
-#   }
-# }
+data "aws_ami" "sg_vpn_server_image" {
+  provider    = aws.sg_provider
+  most_recent = true
+  owners      = ["amazon"]
+  filter {
+    name   = "name"
+    values = ["amzn2-ami-hvm*"]
+  }
+}
 
 # # Launch templates with Ansible Pull
 # resource "aws_launch_template" "us_vpn_server_template" {

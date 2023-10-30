@@ -1,7 +1,15 @@
 ---
-- name: Configure EC2 instance
-  hosts: tag_Type_vpn
+- name: Configure US instance
+  hosts: tag_Type_vpn_us
   become: yes
   tasks:
     - name: Example tasks
-      command: echo "Hello World"
+      command: echo "Hello USA"
+
+- name: Configure SG instance
+  hosts: tag_Type_vpn_sg
+  become: yes
+  tasks:
+    - name: Example tasks
+      command: echo "Hello Singapore"
+
