@@ -111,6 +111,8 @@ configure:
   script:
     - ansible-inventory -i "server_configuration/aws_ec2.yml" --list
     - ansible aws_ec2 -i "server_configuration/aws_ec2.yml" -m ping
+    - ansible all --list-hosts
+    - ansible-inventory --graph
   rules:
     - if: $CI_COMMIT_TITLE !~ /destroy/
   dependencies:
