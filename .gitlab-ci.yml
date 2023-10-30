@@ -1,0 +1,52 @@
+image: hashicorp/terraform:1.0.0
+
+variables:
+  TF_ROOT: ./infrastructure
+  TF_ADDRESS: ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/terraform/state/${CI_ENVIRONMENT_SLUG}
+  TF_CLI_ARGS: -no-color
+
+stages:
+  - init
+  - validate
+  - plan
+  - apply
+  - destroy
+
+cache:
+  paths:
+    - .terraform
+
+before_script:
+  - cd ${TF_ROOT}
+  - terraform --version
+
+init:
+  stage: init
+  script:
+    - terraform init -backend-config="address=${TF_ADDRESS}" -backend-config="access_token=${CI_JOB_TOKEN}"
+
+validate:
+  stage: validate
+  script:
+    - terraform validate
+
+plan:
+  stage: plan
+  script:
+    - terraform plan -out=plan.tfplan
+  artifacts:
+    name: plan
+    paths:
+      - plan.tfplan
+
+apply:
+  stage: apply
+  when: manual
+  script:
+    - terraform apply -input=false plan.tfplan
+
+destroy:
+  stage: destroy
+  when: manual
+  script:
+    - terraform destroy -auto-approve
