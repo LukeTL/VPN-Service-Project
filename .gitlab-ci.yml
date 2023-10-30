@@ -105,7 +105,7 @@ deploy:
     name: $TF_STATE_NAME
 
 # Fetch Ansible Dynamic Inventory from AWS
-# IT WORKS WOOOOOO
+# IT WORKS WOOOOOO (semi works, hv to figure out how inventory even works)
 configure:
   stage: configure
   script:
