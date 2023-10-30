@@ -29,7 +29,8 @@ build:
 deploy:
   extends: .terraform:deploy
   rules:
-    when: manual
+    - if: $CI_COMMIT_TITLE =~ /destroy/
+      when: manual
   dependencies:
     - build
   environment:
