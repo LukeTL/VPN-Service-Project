@@ -54,6 +54,7 @@ image:
 variables:
   TF_ROOT: ${CI_PROJECT_DIR}/infrastructure
   TF_STATE_NAME: default
+  # ANSIBLE_ROOT: ${CI_PROJECT_DIR}/server_configuration
 
 cache:
   key: "${TF_ROOT}"
@@ -103,11 +104,13 @@ deploy:
   environment:
     name: $TF_STATE_NAME
 
-# Fetch Dynamic Inventory from AWS
+# Fetch Ansible Dynamic Inventory from AWS
+# IT WORKS WOOOOOO
 configure:
   stage: configure
   script:
     - ansible-inventory -i "server_configuration/aws_ec2.yml" --list
+    - ansible aws_ec2 -i "server_configuration/aws_ec2.yml" -m ping
   rules:
     - if: $CI_COMMIT_TITLE !~ /destroy/
   dependencies:
