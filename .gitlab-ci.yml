@@ -6,9 +6,9 @@ variables:
   TF_ROOT: ${CI_PROJECT_DIR}/infrastructure
 
 stages:
+  - validate
   - test
   - build
-  - validate
   - deploy
   - cleanup
 
@@ -16,12 +16,12 @@ fmt:
   extends: .terraform:fmt
   needs: []
 
-build:
-  extends: .terraform:build
-
 validate:
   extends: .terraform:validate
   needs: []
+
+build:
+  extends: .terraform:build
 
 deploy:
   extends: .terraform:deploy
