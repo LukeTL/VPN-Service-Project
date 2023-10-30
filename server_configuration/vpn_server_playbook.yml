@@ -13,4 +13,4 @@
     - name: Example tasks
       command: echo "Hello Singapore"
 
-# Make command echo properly
+# Add proper key pairs
