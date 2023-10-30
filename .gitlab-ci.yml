@@ -2,6 +2,9 @@ include:
   - template: Terraform/Base.gitlab-ci.yml
   - template: Jobs/SAST-IaC.gitlab-ci.yml
 
+variables:
+  TF_ROOT: infrastructure
+
 stages:
   - validate
   - test
