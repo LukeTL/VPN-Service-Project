@@ -3,7 +3,7 @@ include:
   - template: Jobs/SAST-IaC.gitlab-ci.yml
 
 variables:
-  TF_ROOT: infrastructure
+  TF_ROOT: ${CI_PROJECT_DIR}/infrastructure
 
 stages:
   - validate
