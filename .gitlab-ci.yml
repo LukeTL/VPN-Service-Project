@@ -48,6 +48,9 @@
 include:
   - template: Jobs/SAST-IaC.gitlab-ci.yml
 
+image:
+  name: registry.gitlab.com/cloud_project1/vpn_service_project/custom_image:v1.0.0
+
 variables:
   TF_ROOT: ${CI_PROJECT_DIR}/infrastructure
   TF_STATE_NAME: default
@@ -67,19 +70,19 @@ stages:
 fmt:
   stage: validate
   script:
-    - terraform fmt
+    - gitlab-terraform fmt
   allow_failure: true
 
 validate:
   stage: validate
   script:
-    - terraform validate
+    - gitlab-terraform validate
 
 build:
   stage: build
   script:
-    - terraform plan
-    - terraform plan-json
+    - gitlab-terraform plan
+    - gitlab-terraform plan-json
   resource_group: ${TF_STATE_NAME}
   artifacts:
     paths:
@@ -90,7 +93,7 @@ build:
 deploy:
   stage: deploy
   script:
-    - terraform apply
+    - gitlab-terraform apply
   resource_group: ${TF_STATE_NAME}
   rules:
     - if: $CI_COMMIT_TITLE !~ /destroy/
@@ -101,7 +104,7 @@ deploy:
 destroy:
   stage: cleanup
   script:
-    - terraform destroy
+    - gitlab-terraform destroy
   resource_group: ${TF_STATE_NAME}
   rules:
     - if: $CI_COMMIT_TITLE =~ /destroy/
