@@ -13,4 +13,4 @@
     - name: Example tasks
       command: echo "Hello Singapore"
 
-# Add proper key pairs, configure bastion
+# Add proper key pairs, configure
