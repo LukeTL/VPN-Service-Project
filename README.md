@@ -4,7 +4,7 @@
 
 ![Baseline Architecture](assets/poc_architecture.drawio.png "Baseline Architecture")
 
-Architecture Logic that I need to implement after settling ansible dynamic inventory with bastion host:
+Architecture Logic that I need to implement after settling current issues:
 
 - OpenVPN will need to have a centralised authentication system. I need to implement regional Microsoft AD for both VPCs
 - Have to look into whether ALB is suitable for stateful VPN connections
