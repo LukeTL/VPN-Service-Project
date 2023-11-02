@@ -10,7 +10,7 @@ resource "aws_instance" "us_instance" {
 
 resource "aws_instance" "eu_instance" {
   provider      = aws.eu_provider
-  ami           = data.aws_ami.us_vpn_server_image.id
+  ami           = data.aws_ami.eu_vpn_server_image.id
   instance_type = "t2.micro"
   tags = {
     Type = "vpn_eu"
