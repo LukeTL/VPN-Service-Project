@@ -1,6 +1,6 @@
 # ## VPC
 # us_vpc_cidr_block = "10.0.0.0/16"
-# sg_vpc_cidr_block = "192.168.0.0/16"
+# eu_vpc_cidr_block = "192.168.0.0/16"
 
 # ## Subnets
 # us_subnet_details = [
@@ -30,29 +30,29 @@
 #   }
 # ]
 
-# sg_subnet_details = [
+# eu_subnet_details = [
 #   {
-#     subnet_name = "sg_ap_southeast_1a_private"
+#     subnet_name = "eu_west_1a_private"
 #     subnet_cidr = "192.168.1.0/24"
-#     subnet_az   = "ap-southeast-1a"
+#     subnet_az   = "eu-west-1a"
 #     is_public   = false
 #   },
 #   {
-#     subnet_name = "sg_ap_southeast_1a_public"
+#     subnet_name = "eu_west_1a_public"
 #     subnet_cidr = "192.168.2.0/24"
-#     subnet_az   = "ap-southeast-1a"
+#     subnet_az   = "eu-west-1a"
 #     is_public   = true
 #   },
 #   {
-#     subnet_name = "sg_ap_southeast_1b_private"
+#     subnet_name = "seu_west_1b_private"
 #     subnet_cidr = "192.168.3.0/24"
-#     subnet_az   = "ap-southeast-1b"
+#     subnet_az   = "eu-west-1b"
 #     is_public   = false
 #   },
 #   {
-#     subnet_name = "sg_ap_southeast_1b_public"
+#     subnet_name = "eu_west_1b_public"
 #     subnet_cidr = "192.168.4.0/24"
-#     subnet_az   = "ap-southeast-1b"
+#     subnet_az   = "eu-west-1b"
 #     is_public   = true
 #   }
 # ]
