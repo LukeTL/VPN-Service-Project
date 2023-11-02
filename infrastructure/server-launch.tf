@@ -9,8 +9,8 @@ data "aws_ami" "us_vpn_server_image" {
   }
 }
 
-data "aws_ami" "sg_vpn_server_image" {
-  provider    = aws.sg_provider
+data "aws_ami" "eu_vpn_server_image" {
+  provider    = aws.eu_provider
   most_recent = true
   owners      = ["amazon"]
   filter {
@@ -28,10 +28,10 @@ data "aws_ami" "sg_vpn_server_image" {
 #   user_data     = filebase64(("./user-data.sh"))
 # }
 
-# resource "aws_launch_template" "sg_vpn_server_template" {
-#   provider      = aws.sg_provider
+# resource "aws_launch_template" "eu_vpn_server_template" {
+#   provider      = aws.eu_provider
 #   name          = "vpn_server_template"
 #   instance_type = "t2.micro"
-#   image_id      = data.aws_ami.sg_vpn_server_image.id
+#   image_id      = data.aws_ami.eu_vpn_server_image.id
 #   user_data     = filebase64(("./user-data.sh"))
 # }

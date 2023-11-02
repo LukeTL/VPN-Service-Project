@@ -7,7 +7,7 @@
       command: echo "Hello USA"
 
 - name: Configure SG instance
-  hosts: tag_Type_vpn_sg
+  hosts: tag_Type_vpn_eu
   become: yes
   tasks:
     - name: Example tasks

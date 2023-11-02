@@ -3,7 +3,7 @@
 #   type = string
 # }
 
-# variable "sg_vpc_cidr_block" {
+# variable "eu_vpc_cidr_block" {
 #   type = string
 # }
 
@@ -17,7 +17,7 @@
 #   }))
 # }
 
-# variable "sg_subnet_details" {
+# variable "eu_subnet_details" {
 #   type = list(object({
 #     subnet_name = string
 #     subnet_cidr = string
