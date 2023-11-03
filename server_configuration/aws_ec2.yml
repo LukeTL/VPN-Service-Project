@@ -1,3 +1,5 @@
+# AWS Ansible Dynamic Inventory
+
 plugin: aws_ec2
 
 regions:

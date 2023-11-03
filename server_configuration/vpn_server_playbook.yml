@@ -1,3 +1,5 @@
+# Server Configuration Ansible Playbook
+
 ---
 - name: Configure US instance
   hosts: tag_Type_vpn_us
