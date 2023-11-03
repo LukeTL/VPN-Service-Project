@@ -1,3 +1,5 @@
+# This will contain the Cloud Networking infrastructure for USA
+
 # resource "aws_vpc" "us_vpc" {
 #   provider   = aws.us_provider
 #   cidr_block = var.us_vpc_cidr_block

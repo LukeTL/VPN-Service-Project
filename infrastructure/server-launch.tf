@@ -1,3 +1,5 @@
+# This section details the needed initial server configuration before the hand off to Ansible
+
 # # Data blocks to obtain latest Amazon Linux Image
 data "aws_ami" "us_vpn_server_image" {
   provider    = aws.us_provider

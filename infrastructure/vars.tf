@@ -1,3 +1,5 @@
+# Defining of variables needed
+
 # ## VPC
 # variable "us_vpc_cidr_block" {
 #   type = string

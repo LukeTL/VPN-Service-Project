@@ -1,3 +1,5 @@
+# Variable value initialisation
+
 # ## VPC
 # us_vpc_cidr_block = "10.0.0.0/16"
 # eu_vpc_cidr_block = "192.168.0.0/16"

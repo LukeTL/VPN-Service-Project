@@ -1,3 +1,5 @@
+# This will contain the Cloud Networking infrastructure for Ireland
+
 # resource "aws_vpc" "eu_vpc" {
 #   provider   = aws.eu_provider
 #   cidr_block = var.eu_vpc_cidr_block
