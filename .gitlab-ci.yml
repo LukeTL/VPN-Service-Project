@@ -1,3 +1,5 @@
+# Pipeline for Terraform and Ansible Development
+
 image:
   name: registry.gitlab.com/cloud_project1/vpn_service_project/custom_image:v1.0.1
 
