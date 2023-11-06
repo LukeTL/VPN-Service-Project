@@ -81,19 +81,23 @@ resource "aws_route_table_association" "eu_public" {
 }
 
 resource "aws_eip" "eu_west_1a_eip" {
+  provider = aws.eu_provider
   depends_on = [ aws_internet_gateway.eu_igw ]
 }
 
 resource "aws_eip" "eu_west_1b_eip" {
+  provider = aws.eu_provider
   depends_on = [ aws_internet_gateway.eu_igw ]
 }
 
 resource "aws_nat_gateway" "eu_west_1a_nat" {
+  provider = aws.eu_provider
   allocation_id = aws_eip.eu_west_1a_eip.id
   subnet_id = local.eu_public_subnets[0].id
 }
 
 resource "aws_nat_gateway" "eu_west_1b_nat" {
+  provider = aws.eu_provider
   allocation_id = aws_eip.eu_west_1b_eip.id
   subnet_id = local.eu_public_subnets[1].id
 }
