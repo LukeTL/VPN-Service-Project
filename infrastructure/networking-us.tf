@@ -75,7 +75,7 @@ resource "aws_eip" "us_eips" {
 }
 
 resource "aws_nat_gateway" "us_nats" {
-  count = 2
+  count = length(local.us_private_subnets)
   provider = aws.us_provider
   allocation_id = aws_eip.us_eips[count.index].id
   subnet_id = local.us_public_subnets[count.index].id
@@ -84,7 +84,6 @@ resource "aws_nat_gateway" "us_nats" {
     "Name" = "${local.us_public_subnets[count.index].availability_zone}-nat"
   }
 }
-
 
 # Routing Table for Private USA Subnets
 resource "aws_route_table" "us_private_table" {
