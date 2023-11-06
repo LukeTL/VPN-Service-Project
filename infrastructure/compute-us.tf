@@ -1,4 +1,6 @@
 # This will contain the compute instances and compute related infrastructure from North Virginia
+
+# Setup Bastions in Public subnets
 # resource "aws_instance" "us_east_1a_bastion" {
 #   provider      = aws.us_provider
 #   subnet_id = aws_subnet.us_subnets
