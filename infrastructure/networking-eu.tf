@@ -94,10 +94,18 @@ resource "aws_nat_gateway" "eu_west_1a_nat" {
   provider = aws.eu_provider
   allocation_id = aws_eip.eu_west_1a_eip.id
   subnet_id = local.eu_public_subnets[0].id
+
+  tags = {
+    "Name" = "eu_west_1a_nat"
+  }
 }
 
 resource "aws_nat_gateway" "eu_west_1b_nat" {
   provider = aws.eu_provider
   allocation_id = aws_eip.eu_west_1b_eip.id
   subnet_id = local.eu_public_subnets[1].id
+
+  tags = {
+    "Name" = "eu_west_1b_nat"
+  }
 }
