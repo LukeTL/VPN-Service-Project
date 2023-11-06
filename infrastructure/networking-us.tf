@@ -81,7 +81,7 @@ resource "aws_nat_gateway" "us_nats" {
   subnet_id = local.us_public_subnets[count.index].id
 
   tags = {
-    "Name" = "${local.us_public_subnets[count.index]}-nat"
+    "Name" = "${local.us_public_subnets[count.index].availability_zone}-nat"
   }
 }
 
