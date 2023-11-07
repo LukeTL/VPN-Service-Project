@@ -11,12 +11,12 @@
 # Bastions will need an EIP
 
 # Setup Bastions in Public subnets
-# resource "aws_instance" "us_east_1a_bastion" {
-#   provider      = aws.us_provider
-#   subnet_id = aws_subnet.us_subnets
-#   ami           = data.aws_ami.us_vpn_server_image.id
-#   instance_type = "t2.micro"
-#   tags = {
-#     Type = "vpn_us"
-#   }
-# }
+resource "aws_instance" "us_east_1a_bastion" {
+  provider      = aws.us_provider
+  ami           = data.aws_ami.us_vpn_server_image.id
+  instance_type = "t2.micro"
+  user_data = filebase64("../control_node_configuration/us_control_node/launch.sh")
+  tags = {
+    Type = "vpn_us"
+  }
+}
