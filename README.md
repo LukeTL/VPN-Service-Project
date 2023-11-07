@@ -6,6 +6,11 @@
 
 Architecture Diagram Issues:
 - An auto-scaling group can span multiple AZs, so need to edit diagram accordingly
+- Change 2 bastions per region to 1 bastion per region, have each bastion in each region be in one auto-scaling group
+- Have one ansible control node per regions, have each control node in each region be in one auto-scaling group
+- Ansible control node has to be configured via launch template, as it has to fetch new scripts upon launch
+- Bastion recover will be done by the ansible control node
+- TLDR: Ansible Control Node created via launch template, Bastion and VPN servers will be initially configured by Ansible from Gitlab runner and maintained by the Ansible Control Node
 
 Architecture Logic that I need to implement after settling current issues:
 
