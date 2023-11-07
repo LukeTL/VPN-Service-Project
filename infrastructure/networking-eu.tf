@@ -9,9 +9,8 @@ resource "aws_vpc" "eu_vpc" {
 # Ireland Public and Private Subnets
 # Iterating through a variable containing a list of objects to generate subnets
 resource "aws_subnet" "eu_subnets" {
-  count = length(var.eu_subnet_details)
-
   provider = aws.eu_provider
+  count    = length(var.eu_subnet_details)
   vpc_id   = aws_vpc.eu_vpc.id
 
   cidr_block              = var.eu_subnet_details[count.index].subnet_cidr
@@ -25,7 +24,7 @@ resource "aws_subnet" "eu_subnets" {
 
 # Intialising Ireland subnets as local variables
 locals {
-  eu_public_subnets = [for subnet in aws_subnet.eu_subnets : subnet if subnet.map_public_ip_on_launch]
+  eu_public_subnets  = [for subnet in aws_subnet.eu_subnets : subnet if subnet.map_public_ip_on_launch]
   eu_private_subnets = [for subnet in aws_subnet.eu_subnets : subnet if subnet.map_public_ip_on_launch == false]
 
   eu_subnets = {

@@ -4,6 +4,9 @@
 
 ![Baseline Architecture](assets/poc_architecture.drawio.png "Baseline Architecture")
 
+Architecture Diagram Issues:
+- An auto-scaling group can span multiple AZs, so need to edit diagram accordingly
+
 Architecture Logic that I need to implement after settling current issues:
 
 - OpenVPN will need to have a centralised authentication system. I need to implement regional Microsoft AD for both VPCs
