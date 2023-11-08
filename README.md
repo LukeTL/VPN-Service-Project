@@ -29,3 +29,6 @@ Current Issues im facing now:
 - Continue development of the terraform baseline architecture before tackling the bigger fishes aforementioned above
 - Still hv to decide whether 2 environments (dev & prod) wld benefit the project
 - Look into Jira for project development??? Random idea
+
+Live Tasklist:
+- Re-think ansible configuration/control node
