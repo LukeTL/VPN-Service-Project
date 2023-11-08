@@ -21,3 +21,5 @@ resource "aws_instance" "us_east_1a_bastion" {
     Type = "vpn_us"
   }
 }
+
+#
