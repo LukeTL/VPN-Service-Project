@@ -32,6 +32,7 @@ validate:
   stage: validate
   script:
     - ls -a
+    - echo "$CI_PROJECT_DIR"
     - gitlab-terraform validate
 
 build:
