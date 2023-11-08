@@ -6,6 +6,7 @@ image:
 variables:
   TF_ROOT: ${CI_PROJECT_DIR}/infrastructure
   TF_STATE_NAME: default
+  TF_VAR_CI_PROJECT_DIR: ${CI_PROJECT_DIR}
   # ANSIBLE_ROOT: ${CI_PROJECT_DIR}/server_configuration
 
 cache:
