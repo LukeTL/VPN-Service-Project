@@ -1,5 +1,7 @@
 # Pipeline for Terraform and Ansible Development
 
+# CI_PROJECT_DIR = /builds/cloud_project1/vpn_service_project
+
 image:
   name: registry.gitlab.com/cloud_project1/vpn_service_project/custom_image:v1.0.1
 
@@ -32,7 +34,6 @@ validate:
   script:
     - ls -a
     - echo $CI_PROJECT_DIR
-    - pwd
     - gitlab-terraform validate
 
 build:
