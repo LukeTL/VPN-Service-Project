@@ -12,7 +12,7 @@
 
 # Setup Bastions in Public subnets
 
-variable "TF_VAR_CI_PROJECT_DIR" {
+variable TF_VAR_CI_PROJECT_DIR {
   type = string
 }
 
