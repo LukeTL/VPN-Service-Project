@@ -30,6 +30,7 @@ fmt:
 validate:
   stage: validate
   script:
+    - ls -a
     - gitlab-terraform validate
 
 build:
