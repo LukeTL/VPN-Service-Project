@@ -24,6 +24,7 @@ resource "aws_instance" "us_east_1a_bastion" {
 }
 
 resource "aws_security_group" "test_security" {
+  provider = aws.us_provider
   name = "test security"
   description = "test security"
   
