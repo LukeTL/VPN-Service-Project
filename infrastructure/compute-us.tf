@@ -16,8 +16,8 @@ resource "aws_instance" "us_east_1a_bastion" {
   provider      = aws.us_provider
   ami           = data.aws_ami.us_vpn_server_image.id
   instance_type = "t2.micro"
-  security_groups = [ "${aws_security_group.test_security.id}" ]
-  user_data = filebase64("/builds/cloud_project1/vpn_service_project/control_node_configuration/us_control_node/launch.sh")
+  security_groups = [aws_security_group.test_security.name]
+  user_data = filebase64("/builds/cloud_project1/vpn_service_projecst/control_node_configuration/us_control_node/launch.sh")
   tags = {
     Type = "vpn_us"
   }
