@@ -22,7 +22,7 @@ resource "aws_instance" "us_east_1a_bastion" {
     Type = "vpn_us"
   }
 }
-#
+##
 resource "aws_security_group" "test_security" {
   provider = aws.us_provider
   name = "test security"
