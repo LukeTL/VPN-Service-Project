@@ -22,4 +22,14 @@ resource "aws_instance" "us_east_1a_bastion" {
   }
 }
 
-######
+resource "aws_security_group" "test_security" {
+  name = "test security"
+  description = "test security"
+  
+  ingress {
+    from_port = 80
+    to_port = 80
+    protocol = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
